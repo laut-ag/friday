@@ -1,0 +1,28 @@
+{
+  "name": "@lautag/friday",
+  "version": "0.0.1",
+  "description": "Javascript implementation of error reporting for laut.ag",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "make:types": "tsc -t es6 -d --emitDeclarationOnly --outdir ./types --allowSyntheticDefaultImports ./src/**/*.ts"
+  },
+  "author": "laut.ag",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-typescript": "^7.9.0",
+    "@babel/register": "^7.9.0",
+    "@sentry/types": "^5.15.5",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.13.2",
+    "@types/sinon": "^9.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2",
+    "sinon": "^9.0.2",
+    "typescript": "^3.8.3"
+  }
+}

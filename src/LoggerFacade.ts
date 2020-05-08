@@ -1,8 +1,7 @@
-import LoggerFacadeData from "./LoggerFacadeData";
+import LoggerFacadeData, {TuserEmail, TuserId, Tusername} from "./LoggerFacadeData";
 import LoggerManager from "./LoggerManager";
-import {TuserEmail, TuserId, Tusername} from "./Interfaces/LoggerData";
-import {TErrorLevel} from "./Interfaces/ErrorLevel";
-import {LoggerInterface} from "./Interfaces/LoggerInterface";
+import {TErrorLevel} from "./ErrorLevel";
+import {LoggerInterface} from "./LoggerInterface";
 
 enum ToSend {
     USERNAME = 'username',
@@ -16,7 +15,10 @@ enum ToSend {
 
 type TtoSendString = keyof typeof ToSend
 
-export default class LoggerFacade {
+/**
+ * Provides the main way to interact with different logger objects
+ */
+class LoggerFacade {
     _data: LoggerFacadeData
     _toSend: ToSend[]
     _manager: LoggerManager
@@ -27,30 +29,35 @@ export default class LoggerFacade {
         this._toSend = []
     }
 
+    /** Add the username */
     username ( username: Tusername ) {
         this._data._username = username
         this._pushToSend( 'USERNAME' )
         return this
     }
 
+    /** Add the user email */
     userEmail ( email: TuserEmail ) {
         this._data._userEmail = email
         this._pushToSend( 'USER_EMAIL' )
         return this
     }
 
+    /** Adds the user id */
     userId ( id: TuserId ) {
         this._data._userId = id
         this._pushToSend( 'USER_ID' )
         return this
     }
 
+    /** Adds the users ip address */
     userIp ( ipAddress: string ) {
         this._data._userIp = ipAddress
         this._pushToSend( 'USER_IP' )
         return this
     }
 
+    /** Adds a tag as a key-value pair in the data object */
     tag ( key: string, value: string ) {
         const index = this._data._tag.findIndex( tag => tag.key === key )
         if ( index === -1 ) {
@@ -62,12 +69,14 @@ export default class LoggerFacade {
         return this
     }
 
+    /** Sets the message level */
     level ( level: TErrorLevel ) {
         this._data._level = level
         this._pushToSend( 'LEVEL' )
         return this
     }
 
+    /** Adds extra values as a key-value pair to the data object */
     extra ( key: string, value: string ) {
         const index = this._data._extra.findIndex( ex => ex.key === key )
         if ( index === -1 ) {
@@ -79,27 +88,29 @@ export default class LoggerFacade {
         return this
     }
 
-    add ( name: string, logger: LoggerInterface ) {
+    /** Adds a new logger */
+    addLogger ( name: string, logger: LoggerInterface ) {
         this._manager.add( name, logger )
-        return this
     }
 
-    remove ( name: string ) {
-        this._manager.remove( name )
-        return this
+    /** Remove a logger */
+    removeLogger ( name: string ): boolean {
+        return this._manager.remove( name )
     }
 
-    clear () {
+    /** Removes all loggers */
+    removeAllLoggers () {
         this._manager.clear()
-        return this
     }
 
-    default ( name: string ) {
-        this._manager.default( name )
-        return this
+    /** Sets the default logger to use */
+    setDefaultLogger ( name: string ): boolean {
+        return this._manager.default( name )
     }
 
-    get ( loggerInstance: string ) {
+    /** Gets a logger instance by name */
+    // TODO: better return type
+    getLogger ( loggerInstance: string ): any {
         return this._manager.get( loggerInstance )
     }
 
@@ -129,44 +140,86 @@ export default class LoggerFacade {
     }
 
     // LoggerInterface
+    /**
+     * Sends the message and any set data with level `emergency`
+     * NB: Overrides `level` on data object
+     */
     emergency ( message: any ) {
         this._call( 'emergency', message )
     }
 
+    /**
+     * Sends the message and any set data with level `alert`
+     * NB: Overrides `level` on data object
+     */
     alert ( message: any ) {
         this._call( 'alert', message )
     }
 
+    /**
+     * Sends the message and any set data with level `critical`
+     * NB: Overrides `level` on data object
+     */
     critical ( message: any ) {
         this._call( 'critical', message )
     }
 
+    /**
+     * Sends the message and any set data with level `error`
+     * NB: Overrides `level` on data object
+     */
     error ( message: any ) {
         this._call( 'error', message )
     }
 
+    /**
+     * Sends the message and any set data with level `warning`
+     * NB: Overrides `level` on data object
+     */
     warning ( message: any ) {
         this._call( 'warning', message )
     }
 
+    /**
+     * Sends the message and any set data with level `notice`
+     * NB: Overrides `level` on data object
+     */
     notice ( message: any ) {
         this._call( 'notice', message )
     }
 
+    /**
+     * Sends the message and any set data with level `info`
+     * NB: Overrides `level` on data object
+     */
     info ( message: any ) {
         this._call( 'info', message )
     }
 
+    /**
+     * Sends the message and any set data with level `debug`
+     * NB: Overrides `level` on data object
+     */
     debug ( message: any ) {
         this._call( 'debug', message )
     }
 
+    /**
+     * Sends the message and any set data with level `log`
+     * NB: Overrides `level` on data object
+     */
     log ( message: any ) {
         this._call( 'log', message )
     }
 
+    /**
+     * Sends the message and any set data with level `message`
+     * NB: Overrides `level` on data object
+     */
     message ( message: any ) {
         this._call( 'message', message )
     }
 
 }
+
+export default LoggerFacade

@@ -1,10 +1,10 @@
-import {LoggerInterface, TLoggerMethods} from "../Interfaces/LoggerInterface";
-import {TErrorLevel} from "../Interfaces/ErrorLevel";
+import {LoggerInterface, TLoggerMethods} from "../LoggerInterface";
+import {TErrorLevel} from "../ErrorLevel";
 
 type TConsoleLevel = 'debug' | 'log' | 'info' | 'warn' | 'error'
 type Context = { [x: string]: any }
 
-export default class ConsoleLogger implements LoggerInterface {
+class ConsoleLogger implements LoggerInterface {
     _stdErrLevels: TConsoleLevel[]
 	_levels: { [ key: string ]: TConsoleLevel }
 	_defaultLevels: { log: TErrorLevel, message: TErrorLevel }
@@ -54,6 +54,7 @@ export default class ConsoleLogger implements LoggerInterface {
 		return `${level} -- ${message}`
 	}
 
+	/** Log to the console or process */
 	log ( method: TLoggerMethods, message: any, context?: Context ) {
     	let level: TErrorLevel
 		if ( method === 'message' || method === 'log' ) {
@@ -68,8 +69,11 @@ export default class ConsoleLogger implements LoggerInterface {
 		else this._stdOut( mappedLevel, formattedMessage )
 	}
 
+	/** Publicly available instance */
 	get instance (): any {
     	return this
 	}
 
 }
+
+export default ConsoleLogger

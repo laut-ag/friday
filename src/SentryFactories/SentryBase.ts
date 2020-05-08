@@ -3,7 +3,7 @@ import type {Integration} from "@sentry/types";
 import type {NodeClient} from "@sentry/node";
 import type {BrowserClient} from "@sentry/browser"
 
-export default class SentryBase {
+class SentryBase {
     _dsn: string;
     _environment: string | undefined;
     _release: string;
@@ -16,16 +16,19 @@ export default class SentryBase {
         this._integrations = []
     }
 
+    /** Sets the dsn */
     dsn ( dsn:string ) {
         this._dsn = dsn
         return this
     }
 
+    /** Sets the environment */
     env ( environment: string ) {
         this._environment = environment
         return this
     }
 
+    /** Sets the Sentry release */
     release ( release: string ) {
         this._release = release
         return this
@@ -50,3 +53,5 @@ export default class SentryBase {
     }
 
 }
+
+export default SentryBase

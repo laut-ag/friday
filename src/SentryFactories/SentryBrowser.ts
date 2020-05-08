@@ -12,6 +12,7 @@ export default class SentryBrowser extends SentryBase {
         return new BrowserClient( this._makeClientOptions() )
     }
 
+    /** Creates a Sentry Hub with a Browser Client */
     make (): Hub {
         return this._makeHub( this._makeBrowserClient() )
     }

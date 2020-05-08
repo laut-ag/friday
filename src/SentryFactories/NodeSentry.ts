@@ -12,7 +12,8 @@ export default class NodeSentry extends SentryBase {
         return new NodeClient( this._makeClientOptions() )
     }
 
-    make () : Hub {
+    /** Creates a Sentry Hub with a Node Client */
+    make (): Hub {
         return this._makeHub( this._makeNodeClient() )
     }
 

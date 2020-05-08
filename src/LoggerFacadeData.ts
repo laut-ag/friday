@@ -1,7 +1,25 @@
-import {Textra, TLoggerData, Ttag, TuserEmail, TuserId, TuserIp, Tusername} from "./Interfaces/LoggerData";
-import {TErrorLevel} from "./Interfaces/ErrorLevel";
+import {TErrorLevel} from "./ErrorLevel";
 
-export default class LoggerFacadeData{
+export type Tusername = undefined | null | string
+export type TuserEmail = undefined | null | string
+export type TuserId = undefined | null | string | number
+export type TuserIp = undefined | null | string
+
+export interface Ttag { key: string, value: string }
+export interface Textra { key: string, value: string}
+
+export interface TLoggerData {
+    username: Tusername,
+    userEmail: TuserEmail,
+    userId: TuserId,
+    userIp: TuserIp,
+    level: TErrorLevel | undefined,
+    extra: Textra[],
+    tag: Ttag[],
+    [x: string]: any,
+}
+
+class LoggerFacadeData{
 
     _username: Tusername
     _userEmail: TuserEmail
@@ -21,6 +39,9 @@ export default class LoggerFacadeData{
         this._tag = []
     }
 
+    /**
+     * Get a fresh version of data
+     */
     data (): TLoggerData {
         return {
             username: this._username,
@@ -34,3 +55,5 @@ export default class LoggerFacadeData{
     }
 
 }
+
+export default LoggerFacadeData

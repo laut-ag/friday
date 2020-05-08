@@ -1,3 +1,6 @@
 lib
+es
+cjs
+browser
 node_modules
 .idea

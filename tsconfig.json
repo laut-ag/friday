@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es5",
+    "target": "esnext",
     "moduleResolution": "node",
     "isolatedModules": true,
     "allowJs": true,
@@ -10,13 +10,18 @@
     "esModuleInterop": true,
     "sourceMap": true
   },
+  "lib": [  "es2015.collection" ],
   "exclude": [
     "node_modules",
     "tests/babel-register.js"
   ],
   "include": [
-    "src",
-    "types",
-    "tests"
-  ]
+    "src"
+  ],
+  "typedocOptions": {
+    "mode": "file",
+    "out": "docs",
+    "includeVersion": true,
+    "readme": "README.md"
+  }
 }

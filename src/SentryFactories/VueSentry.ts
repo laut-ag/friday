@@ -23,11 +23,13 @@ export default class VueSentry extends SentryBrowser {
         this._logErrors = true
     }
 
+    /** Do not attach props to error report */
     noProps () {
         this._attachProps = false
         return this
     }
 
+    /** Do not call Vue's internal error handeler */
     noVueErrors () {
         this._logErrors = false
         return this
@@ -44,6 +46,7 @@ export default class VueSentry extends SentryBrowser {
         return options
     }
 
+    /** Adds integrations and makes Browser Client */
     make () {
         const vueIntegration = new VueIntegration( this._makeIntegrationOptions() )
         this.addIntegration( vueIntegration )

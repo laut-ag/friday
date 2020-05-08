@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "make:types": "tsc -t es6 -d --emitDeclarationOnly --outdir ./types --allowSyntheticDefaultImports ./src/**/*.ts"
+    "make:types": "tsc -t es6 -d --emitDeclarationOnly --outdir ./types --allowSyntheticDefaultImports ./src/**/*",
+    "build:es": "babel --delete-dir-on-start --env-name module -d es/ src --extensions='.ts,.js'",
+    "build:cjs": "babel --delete-dir-on-start --env-name cjs -d cjs/ src --extensions='.ts,.js'",
+    "build:browser": "babel --delete-dir-on-start --env-name browser -d browser/ src --extensions='.ts,.js'",
+    "build": "npm run build:es && npm run build:cjs && npm run build:browser",
+    "docs": "typedoc"
   },
   "author": "laut.ag",
   "license": "ISC",
@@ -26,6 +31,8 @@
     "chai": "^4.2.0",
     "mocha": "^7.1.2",
     "sinon": "^9.0.2",
+    "typedoc": "^0.17.6",
     "typescript": "^3.8.3"
-  }
+  },
+  "dependencies": {}
 }

@@ -1,12 +1,12 @@
 import fs from 'fs'
 import path from 'path'
-import {LoggerInterface, TLoggerMethods} from "../Interfaces/LoggerInterface";
+import {LoggerInterface, TLoggerMethods} from "../LoggerInterface";
 
 interface FileLoggerOptions {
     filepath?: string,
 }
 
-export default class FileLogger implements LoggerInterface {
+class FileLogger implements LoggerInterface {
 
     _filepath: string
 
@@ -29,15 +29,17 @@ export default class FileLogger implements LoggerInterface {
         fs.appendFile( file, data, err => { process.stderr.write( JSON.stringify( err, null, 2 ) ) } )
     }
 
+    /** Log message to file */
     log ( type: TLoggerMethods, message: any, data?: object ) {
         const formattedMessage = this._formatMessage( message, data )
         this._write( formattedMessage )
     }
 
-    get instance (): any {
+    /** Publicly available instance */
+    get instance (): this {
         return this
     }
 
-
-
 }
+
+export default FileLogger

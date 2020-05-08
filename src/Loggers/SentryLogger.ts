@@ -1,5 +1,5 @@
-import {LoggerInterface, TLoggerMethods} from "../Interfaces/LoggerInterface";
-import {TErrorLevel} from "../Interfaces/ErrorLevel";
+import {LoggerInterface, TLoggerMethods} from "../LoggerInterface";
+import {TErrorLevel} from "../ErrorLevel";
 
 type TSentryLevel = 'fatal'|'critical'|'error'|'warning'|'log'|'info'|'debug'
 type Context = { [x: string]: any }
@@ -7,7 +7,7 @@ type Hub = import( '@sentry/types' ).Hub
 type Scope = import( '@sentry/types' ).Scope
 type Severity = import( '@sentry/types' ).Severity
 
-export default class SentryLogger implements LoggerInterface {
+class SentryLogger implements LoggerInterface {
     _Sentry: Hub
     _levels: { [ key: string ]: TSentryLevel }
 
@@ -67,6 +67,7 @@ export default class SentryLogger implements LoggerInterface {
         else this._Sentry.captureException( message )
     }
 
+    /** Logs message to Sentry */
     log (type: TLoggerMethods, message: any, context?: Context) {
         const self = this
         if ( !context || context.keys().length === 0 ) {
@@ -83,8 +84,11 @@ export default class SentryLogger implements LoggerInterface {
         } )
     }
 
+    /** Publicly available instance */
     get instance (): Hub {
         return this._Sentry
     }
 
 }
+
+export default SentryLogger

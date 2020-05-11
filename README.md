@@ -13,6 +13,7 @@ The preference is to have a facade driven logger which is extensible through com
 #.tag(key, value) -> this
 #.level(level) -> this
 #.extra(key, value) -> this
+#.use(loggerName) -> this
 #.getLogger(loggerName) -> exposed logger instance
 #.addLogger(loggerName, logger)
 #.removeLogger(loggerName)

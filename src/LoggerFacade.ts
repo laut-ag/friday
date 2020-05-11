@@ -22,11 +22,13 @@ class LoggerFacade {
     _data: LoggerFacadeData
     _toSend: ToSend[]
     _manager: LoggerManager
+    _useLoggers: string[]
 
     constructor ( manager?: LoggerManager ) {
         this._manager = manager ? manager : new LoggerManager()
         this._data = new LoggerFacadeData()
         this._toSend = []
+        this._useLoggers = []
     }
 
     /** Add the username */
@@ -138,15 +140,23 @@ class LoggerFacade {
 
     _call ( method: any, message: any ): Promise<boolean> {
         return new Promise( res => {
-            res( true )
             const data = this._transportable()
-            this._manager.log( method, message, data )
+            this._manager.log( method, message, data, this._useLoggers )
             this._resetData()
+            res( true )
         } )
     }
 
     _resetData () {
         this._data = new LoggerFacadeData()
+        this._useLoggers = []
+    }
+
+    /** Specify which logger to use for this call */
+    use( name: string ) {
+        const exists = this._useLoggers.indexOf( name ) !== -1
+        if ( !exists ) this._useLoggers.push( name )
+        return this
     }
 
     // LoggerInterface

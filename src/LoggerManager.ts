@@ -57,9 +57,14 @@ class LoggerManager {
     }
 
     /** Sends a log method to each registered logger */
-    log ( method: TLoggerMethods, message: any, data: Context) {
-        // @ts-ignore
-        this._loggers.forEach( logger =>{
+    log ( method: TLoggerMethods, message: any, data: Context, use: string[] = [] ) {
+        if ( use.length ) use.forEach( name => {
+           if ( this._loggers.has(name) ) {
+               // @ts-ignore
+               this._loggers.get(name).log( method, message, data )
+           }
+        } )
+        else this._loggers.forEach( logger =>{
             logger.log( method, message, data )
         })
     }

@@ -154,5 +154,25 @@ describe( '--LoggerFacade--', function () {
             const res = logger.getLogger( 'console' )
             assert.equal( res, 'dummyLogger' )
         } )
+
+        it( '#use -- 1', function () {
+            const spy = sinon.spy(DummyLogger, "log")
+            logger.addLogger( 'console1', DummyLogger )
+            logger.addLogger( 'console2', DummyLogger )
+            logger.addLogger( 'console3', DummyLogger )
+            logger.use( 'console2' ).info( 'one logger' )
+            assert.isTrue( spy.calledOnce )
+            spy.restore()
+        })
+
+        it( '#use -- 2', function () {
+            const spy = sinon.spy(DummyLogger, "log")
+            logger.addLogger( 'console1', DummyLogger )
+            logger.addLogger( 'console2', DummyLogger )
+            logger.addLogger( 'console3', DummyLogger )
+            logger.use( 'console1' ).use('console3' ).info( 'two logger' )
+            assert.isTrue( spy.calledTwice)
+            spy.restore()
+        })
     } )
 } )

@@ -45,8 +45,10 @@ class LoggerManager {
         this._default = undefined
     }
 
-    /** Get an loggers underlying instance */
-    // TODO: better return type
+    /**
+     * Get a loggers underlying instance
+     * This returns any because it is up to the specific transport what it exposes as the 'instance'
+     */
     get ( loggerInstance: string): any {
         const logger = this._loggers.get( loggerInstance )
         if ( logger !== undefined ) {

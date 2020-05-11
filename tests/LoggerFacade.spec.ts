@@ -3,6 +3,7 @@ import sinon, {SinonStub} from 'sinon'
 import LoggerFacade from '../src/LoggerFacade'
 import LoggerManager from "../src/LoggerManager";
 import LoggerFacadeData from "../src/LoggerFacadeData";
+import waitForExpect from "wait-for-expect";
 
 const DummyLogger = { instance: 'dummyLogger', log: () => {} }
 
@@ -58,44 +59,44 @@ describe( '--LoggerFacade--', function () {
             spy = sinon.stub( logger._manager, "log" )
         } )
 
-        it( '#emergency', function () {
-            logger.emergency( 'foo' )
+        it( '#emergency', async function () {
+            await logger.emergency( 'foo' )
             assert.isTrue( spy.calledOnceWith( 'emergency', 'foo', { userId: 1 } ) )
         } )
-        it( '#alert', function () {
-            logger.alert( 'foo' )
+        it( '#alert', async function () {
+            await logger.alert( 'foo' )
             assert.isTrue( spy.calledOnceWith( 'alert', 'foo', { userId: 1 } ) )
         } )
-        it( '#critical', function () {
-            logger.critical( 'foo' )
+        it( '#critical', async function () {
+            await logger.critical( 'foo' )
             assert.isTrue( spy.calledOnceWith( 'critical', 'foo', { userId: 1 } ) )
         } )
-        it( '#error', function () {
-            logger.error( 'foo' )
+        it( '#error', async function () {
+            await logger.error( 'foo' )
             assert.isTrue( spy.calledOnceWith( 'error', 'foo', { userId: 1 } ) )
         } )
-        it( '#warning', function () {
-            logger.warning( 'foo' )
+        it( '#warning', async function () {
+            await logger.warning( 'foo' )
             assert.isTrue( spy.calledOnceWith( 'warning', 'foo', { userId: 1 } ) )
         } )
-        it( '#notice', function () {
-            logger.notice( 'foo' )
+        it( '#notice', async function () {
+            await logger.notice( 'foo' )
             assert.isTrue( spy.calledOnceWith( 'notice', 'foo', { userId: 1 } ) )
         } )
-        it( '#info', function () {
-            logger.info( 'foo' )
+        it( '#info', async function () {
+            await logger.info( 'foo' )
             assert.isTrue( spy.calledOnceWith( 'info', 'foo', { userId: 1 } ) )
         } )
-        it( '#debug', function () {
-            logger.debug( 'foo' )
+        it( '#debug', async function () {
+            await logger.debug( 'foo' )
             assert.isTrue( spy.calledOnceWith( 'debug', 'foo', { userId: 1 } ) )
         } )
-        it( '#log', function () {
-            logger.log( 'foo' )
+        it( '#log', async function () {
+            await logger.log( 'foo' )
             assert.isTrue( spy.calledOnceWith( 'log', 'foo', { userId: 1 } ) )
         } )
-        it( '#message', function () {
-            logger.message( 'foo' )
+        it( '#message', async function () {
+            await logger.message( 'foo' )
             assert.isTrue( spy.calledOnceWith( 'message', 'foo', { userId: 1 } ) )
         } )
     } )

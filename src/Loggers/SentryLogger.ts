@@ -56,8 +56,8 @@ class SentryLogger implements LoggerInterface {
     }
 
     _setExtra ( scope: Scope, context: Context = {} ) {
-        if ( context.extras ) {
-            context.extras.forEach( ( extra: { key: string, value: string } ) => scope.setExtra( extra.key, extra.value ) )
+        if ( context.extra ) {
+            context.extra.forEach( ( extra: { key: string, value: string } ) => scope.setExtra( extra.key, extra.value ) )
         }
         return scope
     }

@@ -71,7 +71,7 @@ describe( '--SentryLogger via NodeSentry--', function () {
         logger.log( 'error', err, context )
         await waitForExpect( () => assert.lengthOf( testkit.reports(), 1 ) )
         const report = testkit.reports()[0]
-        assert.deepEqual( report.tags, { foo: 'bar', bar: 'baz'} )
+        assert.deepEqual( report.extra, { foo: 'bar', bar: 'baz'} )
     } )
     describe( 'log methods', function () {
         const testCases = [

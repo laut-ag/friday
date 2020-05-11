@@ -108,8 +108,10 @@ class LoggerFacade {
         return this._manager.default( name )
     }
 
-    /** Gets a logger instance by name */
-    // TODO: better return type
+    /**
+     * Gets a logger instance by name
+     * This returns any because it is up to the specific transport what it exposes as the 'instance'
+     */
     getLogger ( loggerInstance: string ): any {
         return this._manager.get( loggerInstance )
     }
@@ -124,7 +126,7 @@ class LoggerFacade {
     // TODO: fingerprint
     // see https://docs.sentry.io/platforms/javascript/#setting-the-fingerprint
 
-    _transportable () {
+    _transportable (): { [key: string]: any } {
         const data = this._data.data()
         const rdata: { [x: string]: any } = {}
         for ( const key in data ) {
@@ -134,9 +136,17 @@ class LoggerFacade {
         return rdata
     }
 
-    _call ( method: any, message: any ) {
-        const data = this._transportable()
-        this._manager.log( method, message, data )
+    _call ( method: any, message: any ): Promise<boolean> {
+        return new Promise( res => {
+            res( true )
+            const data = this._transportable()
+            this._manager.log( method, message, data )
+            this._resetData()
+        } )
+    }
+
+    _resetData () {
+        this._data = new LoggerFacadeData()
     }
 
     // LoggerInterface
@@ -144,80 +154,80 @@ class LoggerFacade {
      * Sends the message and any set data with level `emergency`
      * NB: Overrides `level` on data object
      */
-    emergency ( message: any ) {
-        this._call( 'emergency', message )
+    emergency ( message: any ): Promise<boolean> {
+        return this._call( 'emergency', message )
     }
 
     /**
      * Sends the message and any set data with level `alert`
      * NB: Overrides `level` on data object
      */
-    alert ( message: any ) {
-        this._call( 'alert', message )
+    alert ( message: any ): Promise<boolean> {
+        return this._call( 'alert', message )
     }
 
     /**
      * Sends the message and any set data with level `critical`
      * NB: Overrides `level` on data object
      */
-    critical ( message: any ) {
-        this._call( 'critical', message )
+    critical ( message: any ): Promise<boolean> {
+        return this._call( 'critical', message )
     }
 
     /**
      * Sends the message and any set data with level `error`
      * NB: Overrides `level` on data object
      */
-    error ( message: any ) {
-        this._call( 'error', message )
+    error ( message: any ): Promise<boolean> {
+        return this._call( 'error', message )
     }
 
     /**
      * Sends the message and any set data with level `warning`
      * NB: Overrides `level` on data object
      */
-    warning ( message: any ) {
-        this._call( 'warning', message )
+    warning ( message: any ): Promise<boolean> {
+        return this._call( 'warning', message )
     }
 
     /**
      * Sends the message and any set data with level `notice`
      * NB: Overrides `level` on data object
      */
-    notice ( message: any ) {
-        this._call( 'notice', message )
+    notice ( message: any ): Promise<boolean> {
+        return this._call( 'notice', message )
     }
 
     /**
      * Sends the message and any set data with level `info`
      * NB: Overrides `level` on data object
      */
-    info ( message: any ) {
-        this._call( 'info', message )
+    info ( message: any ): Promise<boolean> {
+        return this._call( 'info', message )
     }
 
     /**
      * Sends the message and any set data with level `debug`
      * NB: Overrides `level` on data object
      */
-    debug ( message: any ) {
-        this._call( 'debug', message )
+    debug ( message: any ): Promise<boolean> {
+        return this._call( 'debug', message )
     }
 
     /**
      * Sends the message and any set data with level `log`
      * NB: Overrides `level` on data object
      */
-    log ( message: any ) {
-        this._call( 'log', message )
+    log ( message: any ): Promise<boolean> {
+        return this._call( 'log', message )
     }
 
     /**
      * Sends the message and any set data with level `message`
      * NB: Overrides `level` on data object
      */
-    message ( message: any ) {
-        this._call( 'message', message )
+    message ( message: any ): Promise<boolean> {
+        return this._call( 'message', message )
     }
 
 }

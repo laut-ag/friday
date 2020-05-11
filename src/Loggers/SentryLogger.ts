@@ -1,8 +1,7 @@
-import {LoggerInterface, TLoggerMethods} from "../LoggerInterface";
+import {Context, LoggerInterface, TLoggerMethods} from "../LoggerInterface";
 import {TErrorLevel} from "../ErrorLevel";
 
 type TSentryLevel = 'fatal'|'critical'|'error'|'warning'|'log'|'info'|'debug'
-type Context = { [x: string]: any }
 type Hub = import( '@sentry/types' ).Hub
 type Scope = import( '@sentry/types' ).Scope
 type Severity = import( '@sentry/types' ).Severity
@@ -36,6 +35,7 @@ class SentryLogger implements LoggerInterface {
     _setLevel ( scope: Scope, level: TErrorLevel | undefined, context: Context = {} ) {
         if ( level || context.level ) {
             const compLevel = level || context.level
+            // @ts-ignore
             scope.setLevel( this._levels[ compLevel ] as Severity )
         }
         return scope
@@ -68,9 +68,9 @@ class SentryLogger implements LoggerInterface {
     }
 
     /** Logs message to Sentry */
-    log (type: TLoggerMethods, message: any, context?: Context) {
+    log (type: TLoggerMethods, message: any, context: Context = {}) {
         const self = this
-        if ( !context || Object.keys(context).length === 0 ) {
+        if ( Object.keys(context).length === 0 ) {
             return this._send( type, message )
         }
 

@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import {LoggerInterface, TLoggerMethods} from "../LoggerInterface";
+import {Context, LoggerInterface, TLoggerMethods} from "../LoggerInterface";
 
 interface FileLoggerOptions {
     filepath?: string,
@@ -14,7 +14,7 @@ class FileLogger implements LoggerInterface {
         this._filepath = options.filepath || __dirname
     }
 
-    _formatMessage ( message: any, data: object = {} ) {
+    _formatMessage ( message: any, data: Context ) {
         return JSON.stringify( {
             date: new Date(),
             message,
@@ -30,8 +30,8 @@ class FileLogger implements LoggerInterface {
     }
 
     /** Log message to file */
-    log ( type: TLoggerMethods, message: any, data?: object ) {
-        const formattedMessage = this._formatMessage( message, data )
+    log ( type: TLoggerMethods, message: any, context: Context = {}) {
+        const formattedMessage = this._formatMessage( message, context)
         this._write( formattedMessage )
     }
 

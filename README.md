@@ -55,6 +55,24 @@ If you send an `Error()` as the message in `#.message()` then sentry will treat 
 
 ### File
 The file logger accepts a path to the folder where the log should be saved. Default is `__dirname`, which is probably not what you want. Your best bet is to give it an absolute path. Files are named according to the date in the form `yyyy-mm-dd`. **Do not try to give a filename ... it won't work**
+
+The format is a structured JSON object which is stringified of the form
+```
+{
+  date: Date.now(),
+  message,
+  ...data
+}
+```
+where `...data` is any data passed to the logger by the user
+
+### Console
+The console logger outputs `<level> -- <message>` by default. You can pass an optional function to the `ConsoleLogger#constructor` with a formatting you want. The options to the console logger are of the form:
+```
+{
+    formatFn: (level, message, context) => any
+} 
+```
     
 ## Examples
 ### Console

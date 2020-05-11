@@ -1,4 +1,4 @@
-import {LoggerInterface, TLoggerMethods} from "./LoggerInterface";
+import {Context, LoggerInterface, TLoggerMethods} from "./LoggerInterface";
 
 /** LoggerManager */
 class LoggerManager {
@@ -57,7 +57,7 @@ class LoggerManager {
     }
 
     /** Sends a log method to each registered logger */
-    log ( method: TLoggerMethods, message: any, data?: object ) {
+    log ( method: TLoggerMethods, message: any, data: Context) {
         // @ts-ignore
         this._loggers.forEach( logger =>{
             logger.log( method, message, data )

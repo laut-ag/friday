@@ -1,4 +1,4 @@
-import LoggerFacadeData, {TuserEmail, TuserId, Tusername} from "./LoggerFacadeData";
+import LoggerFacadeData, {TLoggerData, TuserEmail, TuserId, Tusername} from "./LoggerFacadeData";
 import LoggerManager from "./LoggerManager";
 import {TErrorLevel} from "./ErrorLevel";
 import {LoggerInterface} from "./LoggerInterface";
@@ -126,7 +126,7 @@ class LoggerFacade {
     // TODO: fingerprint
     // see https://docs.sentry.io/platforms/javascript/#setting-the-fingerprint
 
-    _transportable (): { [key: string]: any } {
+    _transportable (): Partial<TLoggerData> {
         const data = this._data.data()
         const rdata: { [x: string]: any } = {}
         for ( const key in data ) {

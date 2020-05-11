@@ -40,5 +40,17 @@ describe( '--ConsoleLogger--', function () {
                 })
             } )
         } )
+        describe( 'formats a message propery', function () {
+            const logger = new ConsoleLogger( { formatFn: (level, message, options) => `${level} -- ${message} -- ${options.username}`})
+            it( '#_formatMessage -- valid option', function () {
+                let res = logger._formatMessage( 'info', 'foo', { username: 'barry' } )
+                assert.equal( res, 'info -- foo -- barry')
+            })
+            it( '#_formatMessage -- undefined option', function () {
+                let res = logger._formatMessage( 'info', 'foo', {} )
+                assert.equal( res, 'info -- foo -- undefined')
+            })
+
+        } )
     } )
 })

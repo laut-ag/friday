@@ -1,15 +1,26 @@
-import {LoggerInterface, TLoggerMethods} from "../LoggerInterface";
+import {Context, LoggerInterface, TLoggerMethods} from "../LoggerInterface";
 import {TErrorLevel} from "../ErrorLevel";
 
 type TConsoleLevel = 'debug' | 'log' | 'info' | 'warn' | 'error'
-type Context = { [x: string]: any }
+interface IConsoleOptions {
+	formatFn?: FormatFn
+}
+interface FormatFn {
+	( level: TErrorLevel, message: any, context: Context ): any
+}
 
 class ConsoleLogger implements LoggerInterface {
     _stdErrLevels: TConsoleLevel[]
 	_levels: { [ key: string ]: TConsoleLevel }
 	_defaultLevels: { log: TErrorLevel, message: TErrorLevel }
+	_formatFn: FormatFn | undefined
 
-	constructor () {
+	constructor ( options: IConsoleOptions = {} ) {
+        if ( options.formatFn ) {
+        	this._formatFn = options.formatFn
+		} else {
+        	this._formatFn = undefined
+		}
 		this._levels = {
 			emergency: 'error',
 			alert: 'error',
@@ -30,7 +41,7 @@ class ConsoleLogger implements LoggerInterface {
 
 	}
 
-	_stdOut ( level: TConsoleLevel, message: string ) {
+	_stdOut ( level: TConsoleLevel, message: any ) {
 		// @ts-ignore
 		if ( console._stdout ) {
 			// @ts-ignore
@@ -40,7 +51,7 @@ class ConsoleLogger implements LoggerInterface {
 		}
 	}
 
-	_stdError ( level: TConsoleLevel, message: string ) {
+	_stdError ( level: TConsoleLevel, message: any ) {
 		// @ts-ignore
 		if ( console._stderr ) {
 			// @ts-ignore
@@ -50,15 +61,19 @@ class ConsoleLogger implements LoggerInterface {
 		}
 	}
 
-	_formatMessage( level: TErrorLevel, message: any, context: any ): string {
-		return `${level} -- ${message}`
+	_formatMessage( level: TErrorLevel, message: any, context: Context): any {
+		if ( this._formatFn !== undefined ) {
+			return this._formatFn( level, message, context )
+		} else {
+			return `${level} -- ${message}`
+		}
 	}
 
 	/** Log to the console or process */
-	log ( method: TLoggerMethods, message: any, context?: Context ) {
+	log ( method: TLoggerMethods, message: any, context: Context = {} ) {
     	let level: TErrorLevel
 		if ( method === 'message' || method === 'log' ) {
-            if ( context && context.level ) level = context.level
+            if ( context.level ) level = context.level
             else level = this._defaultLevels[ method ]
 		} else {
 			level = method

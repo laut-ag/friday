@@ -3,7 +3,8 @@ import sinon, {SinonStub} from 'sinon'
 import LoggerFacade from '../src/LoggerFacade'
 import LoggerManager from "../src/LoggerManager";
 import LoggerFacadeData from "../src/LoggerFacadeData";
-import {Logger} from "typedoc/dist/lib/utils";
+
+const DummyLogger = { instance: 'dummyLogger', log: () => {} }
 
 describe( '--LoggerFacade--', function () {
     describe( '#constructor', function () {
@@ -107,13 +108,13 @@ describe( '--LoggerFacade--', function () {
 
         it( '#addLogger', function () {
             const spy = sinon.stub(logger._manager, "add")
-            const res = logger.addLogger( 'console', {} )
-            assert.isTrue( spy.calledOnceWith( 'console', {} ) )
+            const res = logger.addLogger( 'console', DummyLogger )
+            assert.isTrue( spy.calledOnceWith( 'console', DummyLogger) )
         } )
 
         it( '#removeLogger -- true', function () {
             const spy = sinon.spy(logger._manager, "remove")
-            logger.addLogger( 'console', {} )
+            logger.addLogger( 'console', DummyLogger )
             const res = logger.removeLogger( 'console' )
             assert.isTrue( spy.calledOnceWith( 'console' ) )
             assert.isTrue( res )
@@ -134,7 +135,7 @@ describe( '--LoggerFacade--', function () {
 
         it( '#setDefaultLogger -- true', function () {
             const spy = sinon.spy(logger._manager, "default")
-            logger.addLogger( 'console', {} )
+            logger.addLogger( 'console', DummyLogger )
             const res = logger.setDefaultLogger( 'console' )
             assert.isTrue( spy.calledOnceWith( 'console' ) )
             assert.isTrue( res )
@@ -148,9 +149,9 @@ describe( '--LoggerFacade--', function () {
         } )
 
         it( '#getLogger', function () {
-            logger.addLogger( 'console', { instance: 'consoleInstance' } )
+            logger.addLogger( 'console', DummyLogger )
             const res = logger.getLogger( 'console' )
-            assert.equal( res, 'consoleInstance' )
+            assert.equal( res, 'dummyLogger' )
         } )
     } )
 } )

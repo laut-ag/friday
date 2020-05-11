@@ -1,10 +1,15 @@
 import { Vue as VueIntegration } from '@sentry/integrations'
 import SentryBrowser from "./SentryBrowser";
+import {ISentryConfig} from "./SentryBase";
 
-type VueOptions = {
+interface VueOptions {
     Vue?: any;
     attachProps?: boolean;
     logErrors?: boolean;
+}
+
+interface IVueSentryConfig extends ISentryConfig {
+    Vue?: any
 }
 
 export default class VueSentry extends SentryBrowser {
@@ -12,12 +17,12 @@ export default class VueSentry extends SentryBrowser {
     _logErrors: boolean;
     _vue: any
 
-    constructor ( Vue?: any ) {
-        super()
-        if ( Vue === undefined ) {
+    constructor ( config: IVueSentryConfig = {} ) {
+        super( config )
+        if ( config.Vue === undefined ) {
             this._vue = undefined
         } else {
-            this._vue = Vue
+            this._vue = config.Vue
         }
         this._attachProps = true
         this._logErrors = true

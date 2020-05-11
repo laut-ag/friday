@@ -42,13 +42,13 @@ class SentryLogger implements LoggerInterface {
     }
 
     _setUser ( scope: Scope, context: Context = {} ) {
-        if ( context.keys().length !== 0 ) {
+        if ( Object.keys(context).length !== 0 ) {
             const userFields = [ 'userId', 'username', 'userEmail', 'userIp' ]
                 const user = userFields.reduce( ( acc: { [x: string]: any }, val ): any => {
                 if ( context[ val ] !== undefined ) acc[ val ] = context[ val ]
+                return acc
             }, {} )
-            const keys = user.keys()
-            if ( keys.length !== 0 ) {
+            if ( user && Object.keys(user).length !== 0 ) {
                 scope.setUser( user )
             }
         }
@@ -63,24 +63,23 @@ class SentryLogger implements LoggerInterface {
     }
 
     _send ( type: TLoggerMethods, message: any ) {
-        if ( type === 'message' ) this._Sentry.captureMessage( message )
-        else this._Sentry.captureException( message )
+        if ( type === 'message' ) return this._Sentry.captureMessage( message )
+        else return this._Sentry.captureException( message )
     }
 
     /** Logs message to Sentry */
     log (type: TLoggerMethods, message: any, context?: Context) {
         const self = this
-        if ( !context || context.keys().length === 0 ) {
-            this._send( type, message )
-            return
+        if ( !context || Object.keys(context).length === 0 ) {
+            return this._send( type, message )
         }
 
-        self._Sentry.withScope( function ( scope ) {
+        return self._Sentry.withScope( function ( scope ) {
             self._setLevel( scope, type as any, context )
             self._setExtra( scope, context )
             self._setTag( scope, context )
             self._setUser( scope, context )
-            self._send( type, message )
+            return self._send( type, message )
         } )
     }
 

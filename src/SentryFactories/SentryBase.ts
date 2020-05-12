@@ -36,10 +36,6 @@ class SentryBase {
         return this
     }
 
-    _makeHub ( client: BrowserClient | NodeClient ): Hub {
-        return new Hub( client )
-    }
-
    _extractBaseConfig ( config: { [key: string]: any } ) {
         let { dsn, environment, release, integrations, transport, ...rest } = config
         let interConfig: { [x: string]: any } = { dsn, environment, release, integrations, transport }

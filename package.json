@@ -4,7 +4,7 @@
   "description": "Javascript implementation of error reporting for laut.ag",
   "main": "cjs/index.js",
   "module": "es/index.js",
-  "browser": "browser/index.js",
+  "browser": "browser/browser-index.js",
   "types": "types/index.d.ts",
   "scripts": {
     "test": "mocha",

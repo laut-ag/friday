@@ -1,24 +1,24 @@
 import LoggerFacade from './LoggerFacade'
 import ConsoleLogger from './Loggers/ConsoleLogger'
-import FileLogger from "./Loggers/FileLogger";
 import SentryLogger from "./Loggers/SentryLogger";
 import SentryBase from "./SentryFactories/SentryBase";
-import NodeSentry from "./SentryFactories/NodeSentry";
+import VueSentry from "./SentryFactories/VueSentry";
+import SentryBrowser from "./SentryFactories/SentryBrowser";
 
 export {
     LoggerFacade,
     ConsoleLogger,
-    FileLogger,
     SentryLogger,
     SentryBase,
-    NodeSentry,
+    SentryBrowser,
+    VueSentry,
 }
 
 export default {
     LoggerFacade,
     ConsoleLogger,
-    FileLogger,
     SentryLogger,
     SentryBase,
-    NodeSentry,
+    SentryBrowser,
+    VueSentry,
 }

@@ -2,7 +2,10 @@
   "name": "@lautag/friday",
   "version": "0.0.1",
   "description": "Javascript implementation of error reporting for laut.ag",
-  "main": "index.js",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
+  "browser": "browser/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "test": "mocha",
     "make:types": "tsc -t es6 -d --emitDeclarationOnly --outdir ./types --allowSyntheticDefaultImports ./src/**/*",
@@ -12,8 +15,18 @@
     "build": "npm run build:es && npm run build:cjs && npm run build:browser",
     "docs": "typedoc"
   },
+  "directories": {
+    "test": "tests",
+    "example": "examples"
+  },
   "author": "laut.ag",
+  "contributors": [
+    "Vern Hockney"
+  ],
   "license": "ISC",
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
@@ -33,9 +46,8 @@
     "sentry-testkit": "^3.2.1",
     "sinon": "^9.0.2",
     "typedoc": "^0.17.6",
-    "typescript": "^3.8.3"
-  },
-  "dependencies": {
+    "typescript": "^3.8.3",
     "wait-for-expect": "^3.0.2"
-  }
+  },
+  "dependencies": {}
 }

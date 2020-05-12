@@ -16,7 +16,7 @@ module.exports = api => {
 
   if ( api.env( 'browser' ) ) {
     delete presets[ 0 ][ 1 ].targets.node
-    presets[ 0 ][ 1 ].targets.browsers = "last 2 versions, ie 11"
+    presets[ 0 ][ 1 ].targets.browsers = "last 2 versions, > 5%, ie 11, Firefox ESR, not dead"
     presets[ 0 ][ 1 ].modules = false
   }
 

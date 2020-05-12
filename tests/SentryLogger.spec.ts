@@ -96,4 +96,10 @@ describe( '--SentryLogger via NodeSentry--', function () {
             } )
         } )
     })
+    it( 'logs without setting error level', async function () {
+        logger.log( 'log', new Error('foo'))
+        await waitForExpect( () => assert.lengthOf( testkit.reports(), 1 ) )
+        const report = testkit.reports()[0]
+        assert.equal( report.level, 'error')
+    } )
 } )

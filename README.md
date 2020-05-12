@@ -39,8 +39,11 @@ These methods are provided for legecy/extended support on some transports. Each 
 ## Transports available
 1. Sentry
     1. Node
+        - `npm i @sentry/node` required
     2. Browser
+        - `ǹpm i @sentry/browser` required
     3. Vue
+        - `npm i @sentry/browser @sentry/integrations` required
 2. File
     1. Node only
 3. Console

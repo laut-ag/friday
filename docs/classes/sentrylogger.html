@@ -1,0 +1,554 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>SentryLogger | error-reporting - v0.0.1</title>
+	<meta name="description" content="Documentation for error-reporting - v0.0.1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">error-reporting - v0.0.1</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="sentrylogger.html">SentryLogger</a>
+				</li>
+			</ul>
+			<h1>Class SentryLogger</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">SentryLogger</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/loggerinterface.html" class="tsd-signature-type">LoggerInterface</a></li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="sentrylogger.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="sentrylogger.html#_sentry" class="tsd-kind-icon">_<wbr>Sentry</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="sentrylogger.html#_levels" class="tsd-kind-icon">_levels</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="sentrylogger.html#instance" class="tsd-kind-icon">instance</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="sentrylogger.html#_send" class="tsd-kind-icon">_send</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="sentrylogger.html#_setextra" class="tsd-kind-icon">_set<wbr>Extra</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="sentrylogger.html#_setlevel" class="tsd-kind-icon">_set<wbr>Level</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="sentrylogger.html#_settag" class="tsd-kind-icon">_set<wbr>Tag</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="sentrylogger.html#_setuser" class="tsd-kind-icon">_set<wbr>User</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="sentrylogger.html#log" class="tsd-kind-icon">log</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Sentry<wbr>Logger<span class="tsd-signature-symbol">(</span>sentry<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Hub</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="sentrylogger.html" class="tsd-signature-type">SentryLogger</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in Loggers/SentryLogger.ts:11</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sentry: <span class="tsd-signature-type">Hub</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="sentrylogger.html" class="tsd-signature-type">SentryLogger</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="_sentry" class="tsd-anchor"></a>
+					<h3>_<wbr>Sentry</h3>
+					<div class="tsd-signature tsd-kind-icon">_<wbr>Sentry<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Hub</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Loggers/SentryLogger.ts:10</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="_levels" class="tsd-anchor"></a>
+					<h3>_levels</h3>
+					<div class="tsd-signature tsd-kind-icon">_levels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Loggers/SentryLogger.ts:11</li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="../globals.html#tsentrylevel" class="tsd-signature-type">TSentryLevel</a></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="instance" class="tsd-anchor"></a>
+					<h3>instance</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> instance<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Hub</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in Loggers/SentryLogger.ts:87</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Publicly available instance</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Hub</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="_send" class="tsd-anchor"></a>
+					<h3>_send</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">_send<span class="tsd-signature-symbol">(</span>type<span class="tsd-signature-symbol">: </span><a href="../globals.html#tloggermethods" class="tsd-signature-type">TLoggerMethods</a>, message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in Loggers/SentryLogger.ts:65</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>type: <a href="../globals.html#tloggermethods" class="tsd-signature-type">TLoggerMethods</a></h5>
+								</li>
+								<li>
+									<h5>message: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="_setextra" class="tsd-anchor"></a>
+					<h3>_set<wbr>Extra</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">_set<wbr>Extra<span class="tsd-signature-symbol">(</span>scope<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Scope</span>, context<span class="tsd-signature-symbol">?: </span><a href="../globals.html#context" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Scope</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in Loggers/SentryLogger.ts:58</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>scope: <span class="tsd-signature-type">Scope</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> context: <a href="../globals.html#context" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol"> = {}</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Scope</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="_setlevel" class="tsd-anchor"></a>
+					<h3>_set<wbr>Level</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">_set<wbr>Level<span class="tsd-signature-symbol">(</span>scope<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Scope</span>, level<span class="tsd-signature-symbol">: </span><a href="../globals.html#terrorlevel" class="tsd-signature-type">TErrorLevel</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span>, context<span class="tsd-signature-symbol">?: </span><a href="../globals.html#context" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Scope</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in Loggers/SentryLogger.ts:35</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>scope: <span class="tsd-signature-type">Scope</span></h5>
+								</li>
+								<li>
+									<h5>level: <a href="../globals.html#terrorlevel" class="tsd-signature-type">TErrorLevel</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> context: <a href="../globals.html#context" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol"> = {}</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Scope</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="_settag" class="tsd-anchor"></a>
+					<h3>_set<wbr>Tag</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">_set<wbr>Tag<span class="tsd-signature-symbol">(</span>scope<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Scope</span>, context<span class="tsd-signature-symbol">?: </span><a href="../globals.html#context" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Scope</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in Loggers/SentryLogger.ts:28</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>scope: <span class="tsd-signature-type">Scope</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> context: <a href="../globals.html#context" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol"> = {}</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Scope</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="_setuser" class="tsd-anchor"></a>
+					<h3>_set<wbr>User</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">_set<wbr>User<span class="tsd-signature-symbol">(</span>scope<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Scope</span>, context<span class="tsd-signature-symbol">?: </span><a href="../globals.html#context" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Scope</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in Loggers/SentryLogger.ts:44</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>scope: <span class="tsd-signature-type">Scope</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> context: <a href="../globals.html#context" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol"> = {}</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Scope</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="log" class="tsd-anchor"></a>
+					<h3>log</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">(</span>type<span class="tsd-signature-symbol">: </span><a href="../globals.html#tloggermethods" class="tsd-signature-type">TLoggerMethods</a>, message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, context<span class="tsd-signature-symbol">?: </span><a href="../globals.html#context" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/loggerinterface.html">LoggerInterface</a>.<a href="../interfaces/loggerinterface.html#log">log</a></p>
+								<ul>
+									<li>Defined in Loggers/SentryLogger.ts:71</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Logs message to Sentry</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>type: <a href="../globals.html#tloggermethods" class="tsd-signature-type">TLoggerMethods</a></h5>
+								</li>
+								<li>
+									<h5>message: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> context: <a href="../globals.html#context" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol"> = {}</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="../enums/tosend.html" class="tsd-kind-icon">To<wbr>Send</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="consolelogger.html" class="tsd-kind-icon">Console<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="filelogger.html" class="tsd-kind-icon">File<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="loggerfacade.html" class="tsd-kind-icon">Logger<wbr>Facade</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="loggerfacadedata.html" class="tsd-kind-icon">Logger<wbr>Facade<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="loggermanager.html" class="tsd-kind-icon">Logger<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="nodesentry.html" class="tsd-kind-icon">Node<wbr>Sentry</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="sentrybase.html" class="tsd-kind-icon">Sentry<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="sentrybrowser.html" class="tsd-kind-icon">Sentry<wbr>Browser</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
+						<a href="sentrylogger.html" class="tsd-kind-icon">Sentry<wbr>Logger</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="sentrylogger.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="sentrylogger.html#_sentry" class="tsd-kind-icon">_<wbr>Sentry</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="sentrylogger.html#_levels" class="tsd-kind-icon">_levels</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="sentrylogger.html#instance" class="tsd-kind-icon">instance</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="sentrylogger.html#_send" class="tsd-kind-icon">_send</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="sentrylogger.html#_setextra" class="tsd-kind-icon">_set<wbr>Extra</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="sentrylogger.html#_setlevel" class="tsd-kind-icon">_set<wbr>Level</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="sentrylogger.html#_settag" class="tsd-kind-icon">_set<wbr>Tag</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="sentrylogger.html#_setuser" class="tsd-kind-icon">_set<wbr>User</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="sentrylogger.html#log" class="tsd-kind-icon">log</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="vuesentry.html" class="tsd-kind-icon">Vue<wbr>Sentry</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/fileloggeroptions.html" class="tsd-kind-icon">File<wbr>Logger<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/formatfn.html" class="tsd-kind-icon">Format<wbr>Fn</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/iconsoleoptions.html" class="tsd-kind-icon">IConsole<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/isentryconfig.html" class="tsd-kind-icon">ISentry<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/ivuesentryconfig.html" class="tsd-kind-icon">IVue<wbr>Sentry<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/loggerinterface.html" class="tsd-kind-icon">Logger<wbr>Interface</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/tloggerdata.html" class="tsd-kind-icon">TLogger<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/textra.html" class="tsd-kind-icon">Textra</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/ttag.html" class="tsd-kind-icon">Ttag</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/vueoptions.html" class="tsd-kind-icon">Vue<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#context" class="tsd-kind-icon">Context</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#hub" class="tsd-kind-icon">Hub</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#scope" class="tsd-kind-icon">Scope</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#severity" class="tsd-kind-icon">Severity</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#tconsolelevel" class="tsd-kind-icon">TConsole<wbr>Level</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#terrorlevel" class="tsd-kind-icon">TError<wbr>Level</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#tloggermethods" class="tsd-kind-icon">TLogger<wbr>Methods</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#tsentrylevel" class="tsd-kind-icon">TSentry<wbr>Level</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#ttosendstring" class="tsd-kind-icon">Tto<wbr>Send<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#tuseremail" class="tsd-kind-icon">Tuser<wbr>Email</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#tuserid" class="tsd-kind-icon">Tuser<wbr>Id</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#tuserip" class="tsd-kind-icon">Tuser<wbr>Ip</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#tusername" class="tsd-kind-icon">Tusername</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

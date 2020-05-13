@@ -1,4 +1,3 @@
-import {Hub} from "@sentry/browser";
 import type {Integration} from "@sentry/types";
 import type {NodeClient} from "@sentry/node";
 import type {BrowserClient} from "@sentry/browser"

@@ -150,6 +150,7 @@ class LoggerFacade {
     _resetData () {
         this._data = new LoggerFacadeData()
         this._useLoggers = []
+        this._toSend = []
     }
 
     /** Specify which logger to use for this call */

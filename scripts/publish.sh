@@ -33,11 +33,13 @@ echo -e "${GREEN}adding docs and types to git${NC}"
 git add docs/ types/
 git commit -m'build docs and types for new version'
 
-read -p "${GREEN}what level is this ${NC}${RED}[patch,minor,major]:${NC} " LEVEL
+echo -e "${GREEN}What level bump is this?${NC}"
+read -p "[patch,minor,major]: " LEVEL
 
 VERSION=$(npm version --no-git-tag-version $LEVEL)
 
 echo -e "${GREEN}commiting $VERSION and tagging${NC}"
+git add package-lock.json package.json
 git commit --amend -m"$VERSION"
 git tag -a $VERSION -m"version $VERSION"
 

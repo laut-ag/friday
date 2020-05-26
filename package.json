@@ -13,7 +13,8 @@
     "build:es": "babel --delete-dir-on-start --env-name module -d es/ src --extensions='.ts,.js'",
     "build:cjs": "babel --delete-dir-on-start --env-name cjs -d cjs/ src --extensions='.ts,.js'",
     "build:browser": "babel --delete-dir-on-start --env-name browser -d browser/ src --extensions='.ts,.js'",
-    "build": "npm run build:es && npm run build:cjs && npm run build:browser"
+    "build": "npm run build:es && npm run build:cjs && npm run build:browser",
+    "release": "./scripts/publish.sh"
   },
   "directories": {
     "test": "tests",

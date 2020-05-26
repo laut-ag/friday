@@ -23,7 +23,7 @@
   "contributors": [
     "Vern Hockney"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "engines": {
     "node": ">=10.0.0"
   },

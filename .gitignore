@@ -4,3 +4,4 @@ cjs
 browser
 node_modules
 .idea
+.npmrc

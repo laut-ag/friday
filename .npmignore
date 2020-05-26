@@ -6,3 +6,4 @@ tests/
 .mocharc.json
 tsconfig.json
 babe.config.js
+.npmrc

@@ -1,6 +1,6 @@
 {
   "name": "@lautag/friday",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Javascript implementation of error reporting for laut.ag",
   "main": "cjs/index.js",
   "module": "es/index.js",

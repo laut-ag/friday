@@ -19,7 +19,7 @@ The preference is to have a facade driven logger which is extensible through com
 #.removeLogger(loggerName)
 #.removeAllLoggers()
 ```
-These are the RFC logger levels. They pass the message and any data set on the facade to the underlying loggers. Each logger should I have a mapping of the RFC levels to the appropriate methods/levels exposed by that particular level. If you use one of these methods, any level set by `.level(level)` will/may be overwritten.
+These are the RFC logger levels. They pass the message and any data set on the facade to the underlying loggers. Each logger should have a mapping of the RFC levels to the appropriate methods/levels exposed by that particular level. If you use one of these methods, any level set by `.level(level)` will/may be overwritten.
 ```
 #.emergency(message)
 #.alert(message)
@@ -60,21 +60,22 @@ If you send an `Error()` as the message in `#.message()` then sentry will treat 
 ### File
 The file logger accepts a path to the folder where the log should be saved. Default is `__dirname`, which is probably not what you want. Your best bet is to give it an absolute path. Files are named according to the date in the form `yyyy-mm-dd`. **Do not try to give a filename ... it won't work**
 
-The format is a structured JSON object which is stringified of the form
+The format is a similar to a syslog of the form:
+```
+** Timestamp: 2020-05-29T13:07:57.195Z, message: <message>[ ,data_key_1: data_key_1_value, ...]>
+```
+or you can pass a custom format function in the constructor:
 ```
 {
-  date: Date.now(),
-  message,
-  ...data
+  formatFn: (level, message, context) => any
 }
 ```
-where `...data` is any data passed to the logger by the user
 
 ### Console
 The console logger outputs `<level> -- <message>` by default. You can pass an optional function to the `ConsoleLogger#constructor` with a formatting you want. The options to the console logger are of the form:
 ```
 {
-    formatFn: (level, message, context) => any
+  formatFn: (level, message, context) => any
 } 
 ```
     
@@ -127,7 +128,7 @@ const sentryLogger = new SentryLogger(Sentry)
 
 const fileLogger = new FileLogger({ filepath: '.' })
 
-const logger = new LoggerFacade
+const logger = new LoggerFacade()
 logger.addLogger('file', fileLogger)
 logger.addLogger('sentry', sentryLogger)
 

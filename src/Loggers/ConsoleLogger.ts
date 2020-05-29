@@ -1,12 +1,10 @@
-import {Context, LoggerInterface, TLoggerMethods} from "../LoggerInterface";
+import {Context, LoggerInterface, TLoggerMethods, FormatFn} from "../LoggerInterface";
 import {TErrorLevel} from "../ErrorLevel";
+
 
 type TConsoleLevel = 'debug' | 'log' | 'info' | 'warn' | 'error'
 interface IConsoleOptions {
 	formatFn?: FormatFn
-}
-interface FormatFn {
-	( level: TErrorLevel, message: any, context: Context ): any
 }
 
 class ConsoleLogger implements LoggerInterface {

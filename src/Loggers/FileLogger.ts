@@ -1,11 +1,13 @@
 import fs, {WriteStream} from 'fs'
 import path from 'path'
 import util from 'util'
-import {Context, LoggerInterface, TLoggerMethods} from "../LoggerInterface";
+import {Context, LoggerInterface, TLoggerMethods, FormatFn} from "../LoggerInterface";
 import {PassThrough} from "stream";
+import {TErrorLevel} from "../ErrorLevel";
 
 interface FileLoggerOptions {
     filepath?: string,
+    formatFn?: FormatFn
 }
 
 class FileLogger implements LoggerInterface {
@@ -15,6 +17,7 @@ class FileLogger implements LoggerInterface {
     _fileStream: WriteStream
     _passThrough: PassThrough
     _isDrained: boolean
+    _formatFn: FormatFn | undefined
 
     constructor ( options: FileLoggerOptions = {} ) {
         this._filepath = options.filepath || __dirname
@@ -23,21 +26,30 @@ class FileLogger implements LoggerInterface {
         this._passThrough = this._makePassThrough()
         this._isDrained = true
         this._passThrough.pipe( this._fileStream )
+        if ( options.formatFn ) {
+            this._formatFn = options.formatFn
+        } else {
+            this._formatFn = undefined
+        }
     }
 
-    _formatMessage ( message: any, data: Context ): string {
-        function printKeys () {
-            let dataString = ''
-            for (const key in data) {
-                dataString += `${key}: ${data[key]}, `
+    _formatMessage ( level: TErrorLevel, message: any, data: Context ): string {
+        if ( this._formatFn !== undefined ) {
+            return this._formatFn( level, message, data )
+        } else {
+            function printKeys () {
+                let dataString = ''
+                for (const key in data) {
+                    dataString += `${key}: ${data[key]}, `
+                }
+                return dataString.length ? ', '+dataString.slice( 0, -2 ) : dataString
             }
-            return dataString.length ? ', '+dataString.slice( 0, -2 ) : dataString
+            function makeMessage () {
+                if ( typeof message === 'string' || typeof message === 'number' ) return message
+                else if ( typeof message === 'object' ) return util.inspect( message, false, 7 )
+            }
+            return `** Timestamp: ${new Date().toDateString()}, message: ${makeMessage()}${printKeys()}\n`
         }
-        function makeMessage () {
-            if ( typeof message === 'string' || typeof message === 'number' ) return message
-            else if ( typeof message === 'object' ) return util.inspect( message, false, 7 )
-        }
-        return `** Timestamp: ${new Date().toDateString()}, message: ${makeMessage()}${printKeys()}\n`
     }
 
     _makeFileStream () {
@@ -65,8 +77,15 @@ class FileLogger implements LoggerInterface {
     }
 
     /** Log message to file */
-    log ( type: TLoggerMethods, message: any, context: Context = {}) {
-        const formattedMessage = this._formatMessage( message, context)
+    log ( method: TLoggerMethods, message: any, context: Context = {}) {
+        let level: TErrorLevel
+        if ( method === 'message' || method === 'log' ) {
+            if ( context.level ) level = context.level
+            else level = 'info'
+        } else {
+            level = method
+        }
+        const formattedMessage = this._formatMessage( level, message, context)
         this._writeToPassThrough( formattedMessage )
     }
 

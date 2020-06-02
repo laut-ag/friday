@@ -56,6 +56,13 @@ class LoggerManager {
         }
     }
 
+    /**
+     * Indicates whether the passed logger is present in the manager
+     */
+    has ( loggerInstance: string): boolean {
+        return this._loggers.has( loggerInstance )
+    }
+
     /** Sends a log method to each registered logger */
     log ( method: TLoggerMethods, message: any, data: Context, use: string[] = [] ) {
         if ( use.length ) use.forEach( name => {

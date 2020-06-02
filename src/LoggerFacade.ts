@@ -118,6 +118,13 @@ class LoggerFacade {
         return this._manager.get( loggerInstance )
     }
 
+    /**
+     * Indicates whether the passed logger is available
+     */
+    hasLogger( loggerInstance: string ): boolean {
+        return this._manager.has( loggerInstance )
+    }
+
     _pushToSend ( value: TtoSendString ) {
         const exists = this._toSend.indexOf( ToSend[ value ] ) !== -1
         if ( !exists ) {

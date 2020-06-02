@@ -2,7 +2,7 @@ import LoggerFacade from './LoggerFacade'
 import ConsoleLogger from './Loggers/ConsoleLogger'
 import SentryLogger from "./Loggers/SentryLogger";
 import SentryBase from "./SentryFactories/SentryBase";
-import VueSentry from "./SentryFactories/VueSentry";
+import SentryVue from "./SentryFactories/SentryVue";
 import SentryBrowser from "./SentryFactories/SentryBrowser";
 import FridayVue from "./VuePlugin/Friday"
 
@@ -12,7 +12,7 @@ export {
     SentryLogger,
     SentryBase,
     SentryBrowser,
-    VueSentry,
+    SentryVue,
     FridayVue,
 }
 
@@ -22,6 +22,6 @@ export default {
     SentryLogger,
     SentryBase,
     SentryBrowser,
-    VueSentry,
+    SentryVue,
     FridayVue
 }

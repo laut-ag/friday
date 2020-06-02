@@ -1,0 +1,21 @@
+# <type>(optional scope): <description>
+# Recommended 50 chars, 72 hard limit
+# |<----  Using a Maximum Of 50 Characters  ---->|
+
+# Body: _Explain_ in more detail what changes you made and why
+# |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
+
+# Footer: _Optional_ external references, meta info, issue references
+
+# Types:
+#    'fix'       (patch version bump required)
+#    'feat'      (minor version bump required)
+#    'refactor'  (refactoring code; patch+ version bump required)
+#    'perf'      (increases performance; patch+ version bump required)
+#    'docs'      (updating documentation; should)
+#    'chore'     (updating tasks, build scripts, etc; no prod code change)
+#    'style'     (formatting, styling linting, etc; no prod code change)
+#    'test'      (adding or refactoring tests; no prod code change)
+# Major Version Bumps:
+# 'BREAKING_CHANGE: '     at the beginning of the body
+

@@ -3,7 +3,7 @@ import { ISentryConfig } from "./SentryBase";
 interface IVueSentryConfig extends ISentryConfig {
     Vue?: any;
 }
-export default class VueSentry extends SentryBrowser {
+export default class SentryVue extends SentryBrowser {
     _attachProps: boolean;
     _logErrors: boolean;
     _vue: any;

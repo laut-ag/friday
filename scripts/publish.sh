@@ -26,22 +26,22 @@ npm run build
 echo -e "${GREEN}Making types${NC}"
 npm run make:types
 
-echo -e "${GREEN}Making docs${NC}"
-npm run make:docs
-
-echo -e "${GREEN}adding docs and types to git${NC}"
-git add docs/ types/
-git commit -m'build docs and types for new version'
-
 echo -e "${GREEN}What level bump is this?${NC}"
 read -p "[patch,minor,major]: " LEVEL
 
 VERSION=$(npm version --no-git-tag-version $LEVEL)
 
-echo -e "${GREEN}commiting $VERSION and tagging${NC}"
-git add package-lock.json package.json
-git commit --amend -m"$VERSION"
+echo -e "${GREEN}commiting $VERSION, (package.json && package-lock.json), types, and tagging${NC}"
+git add package-lock.json package.json types/
+git commit -m"$VERSION"
 git tag -a $VERSION -m"version $VERSION"
+
+echo -e "${GREEN}Making docs${NC}"
+npm run make:docs
+
+echo -e "${GREEN}adding docs to git${NC}"
+git add docs/
+git commit --amend
 
 echo -e "${GREEN}Logging into NPM${NC}"
 npm login

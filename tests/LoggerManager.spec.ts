@@ -78,5 +78,23 @@ describe( '--LoggerManager--', function () {
             const res = manager.get( 'logger' )
             assert.equal( res, 'loggerInstance' )
         })
+
+        it( '#has -- returns false when logger not present', function () {
+            const logger = {
+                instance: 'there'
+            }
+            manager.add( 'there', logger )
+            const res = manager.has( 'notThere' )
+            assert.isFalse( res )
+        } )
+
+        it( '#has -- returns true when logger present', function () {
+            const logger = {
+                instance: 'there'
+            }
+            manager.add( 'there', logger )
+            const res = manager.has( 'there' )
+            assert.isTrue( res )
+        } )
     })
 })

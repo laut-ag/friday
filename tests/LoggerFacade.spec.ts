@@ -155,6 +155,18 @@ describe( '--LoggerFacade--', function () {
             assert.equal( res, 'dummyLogger' )
         } )
 
+        it( '#hasLogger -- true', function () {
+            logger.addLogger( 'there', DummyLogger )
+            const res = logger.hasLogger( 'there' )
+            assert.isTrue( res )
+        } )
+
+        it( '#hasLogger -- false', function () {
+            logger.addLogger( 'there', DummyLogger )
+            const res = logger.hasLogger( 'notThere' )
+            assert.isFalse( res )
+        } )
+
         it( '#use -- 1', function () {
             const spy = sinon.spy(DummyLogger, "log")
             logger.addLogger( 'console1', DummyLogger )

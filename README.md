@@ -79,6 +79,15 @@ The console logger outputs `<level> -- <message>` by default. You can pass an op
 } 
 ```
     
+## Vue Plugin
+A Vue Plugin exposing the logger facade is included. Simply import the plugin and pass the **configured** instance of the friday logger as `option.friday`:
+
+```js
+import FridayVue from '@lautag/friday'
+const friday = <your configured logger>
+Vue.use( FridayVue, { friday } )
+```
+
 ## Examples
 ### Console
 ```js

@@ -4,6 +4,7 @@ import SentryLogger from "./Loggers/SentryLogger";
 import SentryBase from "./SentryFactories/SentryBase";
 import VueSentry from "./SentryFactories/VueSentry";
 import SentryBrowser from "./SentryFactories/SentryBrowser";
+import FridayVue from "./VuePlugin/Friday"
 
 export {
     LoggerFacade,
@@ -12,6 +13,7 @@ export {
     SentryBase,
     SentryBrowser,
     VueSentry,
+    FridayVue,
 }
 
 export default {
@@ -21,4 +23,5 @@ export default {
     SentryBase,
     SentryBrowser,
     VueSentry,
+    FridayVue
 }

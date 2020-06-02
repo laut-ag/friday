@@ -1,5 +1,8 @@
 # Laut Javascript Error/Logging Framework
 
+## Installation
+`npm i @lautag/friday`
+
 ## Facade Driven
 The preference is to have a facade driven logger which is extensible through compositions.
 
@@ -91,7 +94,7 @@ Vue.use( FridayVue, { friday } )
 ## Examples
 ### Console
 ```js
-import {ConsoleLogger, LoggerFacade} from 'lautfm-loggers'
+import {ConsoleLogger, LoggerFacade} from '@lautag/friday'
 
 const consoleLogger = new ConsoleLogger()
 const logger = new LoggerFacade()
@@ -100,7 +103,7 @@ logger.info("I'm a message")
 ```
 ### File
 ```js
-import {FileLogger, LoggerFacade} from 'lautfm-loggers'
+import {FileLogger, LoggerFacade} from '@lautag/friday'
 
 const fileLogger = new FileLogger({ filepath: '.' })
 const logger = new LoggerFacade()
@@ -109,7 +112,7 @@ logger.info( "I'm a message" )
 ```
 ### Sentry
 ```js
-import {SentryBrowser, SentryLogger, LoggerFacade} from 'lautfm-loggers'
+import {SentryBrowser, SentryLogger, LoggerFacade} from '@lautag/friday'
 
 const sentryBuilder = new SentryBrowser()
 const Sentry = sentryBuilder
@@ -125,7 +128,7 @@ logger.info("I'm a message")
 ```
 ### Multiple Loggers
 ```js
-import {SentryNode, SentryLogger, FileLogger, LoggerFacade} from 'lautfm-loggers'
+import {SentryNode, SentryLogger, FileLogger, LoggerFacade} from '@lautag/friday'
 
 const sentryBuilder = new SentryBrowser()
 const Sentry = sentryBuilder

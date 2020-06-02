@@ -9,7 +9,7 @@
   "scripts": {
     "test": "mocha",
     "make:docs": "typedoc",
-    "make:types": "tsc -t es6 -d --emitDeclarationOnly --outdir ./types --allowSyntheticDefaultImports --moduleResolution Node ./src/**/*",
+    "make:types": "rm -rf types/ && tsc -t es6 -d --emitDeclarationOnly --allowJs --outdir ./types --allowSyntheticDefaultImports --moduleResolution Node ./src/**/*",
     "build:es": "./scripts/compile.sh module",
     "build:cjs": "./scripts/compile.sh cjs",
     "build:browser": "./scripts/compile.sh browser",

@@ -10,9 +10,9 @@
     "test": "mocha",
     "make:docs": "typedoc",
     "make:types": "tsc -t es6 -d --emitDeclarationOnly --outdir ./types --allowSyntheticDefaultImports --moduleResolution Node ./src/**/*",
-    "build:es": "babel --delete-dir-on-start --env-name module -d es/ src --extensions='.ts,.js'",
-    "build:cjs": "babel --delete-dir-on-start --env-name cjs -d cjs/ src --extensions='.ts,.js'",
-    "build:browser": "babel --delete-dir-on-start --env-name browser -d browser/ src --extensions='.ts,.js'",
+    "build:es": "./scripts/compile.sh module",
+    "build:cjs": "./scripts/compile.sh cjs",
+    "build:browser": "./scripts/compile.sh browser",
     "build": "npm run build:es && npm run build:cjs && npm run build:browser",
     "release": "./scripts/publish.sh"
   },

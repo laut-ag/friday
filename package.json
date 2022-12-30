@@ -43,7 +43,7 @@
     "@types/node": "^13.13.2",
     "@types/sinon": "^9.0.0",
     "chai": "^4.2.0",
-    "mocha": "^7.1.2",
+    "mocha": "^10.2.0",
     "sentry-testkit": "^3.2.1",
     "sinon": "^9.0.2",
     "typedoc": "^0.17.6",
